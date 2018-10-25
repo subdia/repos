@@ -4,8 +4,10 @@ using System.Web.Mvc;
 using tsnKesaevaTen.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Builder;
 using Microsoft.Owin.Host.SystemWeb;
 using System.Net.Http;
+
 namespace tsnKesaevaTen.Controllers
 {
 
