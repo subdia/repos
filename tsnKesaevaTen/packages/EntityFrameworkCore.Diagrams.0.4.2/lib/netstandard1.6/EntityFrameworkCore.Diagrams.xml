@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntityFrameworkCore.Diagrams</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware">
+            <summary>
+            Middleware for application's request pipeline, that handles requests
+            within <see cref="P:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions.RequestPath"/> except ones that
+            request frontend app static files - they are served with 
+            <see cref="T:Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Options.IOptions{Microsoft.Extensions.DependencyInjection.EfDiagramsOptions})">
+            <summary>
+                Initializes a new instance of the <see cref="!:DatabaseErrorPageMiddleware" /> class
+            </summary>
+            <param name="next">Delegate to execute the next piece of middleware in the request pipeline.</param>
+            <param name="loggerFactory">
+                The <see cref="T:Microsoft.Extensions.Logging.ILoggerFactory" /> for the application. This middleware both produces logging messages and
+                consumes them to detect database related exception.
+            </param>
+            <param name="options">The options to control what information is displayed on the error page.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+                Process an individual request.
+            </summary>
+            <param name="httpContext">The HTTP context for the current request.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions">
+            <summary>
+            Options for <see cref="T:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware"/>. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions.DbContextType">
+            <summary>
+            Gets or sets <see cref="T:System.Type"/> of <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> that
+            will be used to extract data model for diagram. Only one context type is currently supported.
+            This will change as soon as frontend app supports it.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions.RequestPath">
+            <summary>
+            Gets or sets base path for all requests within current library
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EfDiagramsServiceCollectionExtensions.AddEfDiagrams``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds <see cref="T:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware"/> with default <see cref="T:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions"/> 
+            to application's request pipeline.
+            </summary>
+            <typeparam name="TDbContext"></typeparam>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.EfDiagramsServiceCollectionExtensions.AddEfDiagrams(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.DependencyInjection.EfDiagramsOptions)">
+            <summary>
+            Adds <see cref="T:Microsoft.Extensions.DependencyInjection.EfDiagramsMiddleware"/> with specified <see cref="T:Microsoft.Extensions.DependencyInjection.EfDiagramsOptions"/> 
+            to application's request pipeline.
+            </summary>
+            <typeparam name="TDbContext"></typeparam>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
