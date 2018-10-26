@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using tsnKesaevaTen.Models;
 
 namespace tsnKesaevaTen.Controllers
 {
     public class HomeController : Controller
     {
+        Users db = new Users();
+
         public ActionResult Index() {
             return View();
         }
@@ -27,7 +30,7 @@ namespace tsnKesaevaTen.Controllers
 
         public ActionResult Registration () {
 
-            return View();
+            return View(db.UserId);
         }
     }
 }
